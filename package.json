@@ -1,0 +1,30 @@
+{
+    "name": "SoapBox",
+    "version": "1.0.0",
+    "description": "A blogging tool powered by Netlify and Dropbox",
+    "main": "",
+    "scripts": {
+        "get-posts": "node ./scripts/fetch-posts.js",
+        "start": "npm run fetch-posts && cd ./src && bundle exec jekyll serve",
+        "start-functions": "netlify-lambda serve ./src/_functions",
+        "build": "npm run fetch-posts && npm run build-functions && cd ./src && bundle exec jekyll buil",
+        "build-functions": "netlify-lambda build ./src/_functions"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/lucasausbury/SoapBox.git"
+    },
+    "author": "Lucas Ausbury",
+    "license": "",
+    "bugs": {
+        "url": "https://github.com/lucasausbury/SoapBox/issues"
+    },
+    "homepage": "https://github.com/lucasausbury/SoapBox#readme",
+    "devDependencies": {
+        "dotenv": "^6.0.0",
+        "dropbox": "^4.0.5",
+        "fs-extra": "^6.0.1",
+        "isomorphic-fetch": "^2.2.1",
+        "netlify-lambda": "^0.4.0"
+    }
+}

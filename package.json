@@ -4,7 +4,7 @@
     "description": "A blogging tool powered by Netlify and Dropbox",
     "main": "",
     "scripts": {
-        "get-posts": "node ./scripts/fetch-posts.js",
+        "fetch-posts": "node ./scripts/fetch-posts.js",
         "start": "npm run fetch-posts && cd ./src && bundle exec jekyll serve",
         "start-functions": "netlify-lambda serve ./src/_functions",
         "build": "npm run fetch-posts && npm run build-functions && cd ./src && bundle exec jekyll buil",

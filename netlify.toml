@@ -1,4 +1,4 @@
 [build]
     functions = "./build-functions"
     publish = "./build"
-    command = "npm run build"
+    command = "npm install && npm run build"

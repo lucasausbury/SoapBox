@@ -14,16 +14,14 @@ exports.handler = function(event, context, callback) {
             }
         });
     } else if( headers["x-dropbox-signature"] ) {
-        if( process.env.NETLIFY_BUILD_HOOK_URL ) {
-            fetch(process.env.NETLIFY_BUILD_HOOK_URL, {
-                method:'POST',
+        fetch('https://api.netlify.com/build_hooks/5cd8780d0f75d2ed2b810961', {
+            method:'POST',
+            body:""
+        }).then(res => {
+            callback(null, {
+                statusCode:200,
                 body:""
-            }).then(res => {
-                callback(null, {
-                    statusCode:200,
-                    body:""
-                });
-            })
-        } else console.log("NETLIFY BUILD HOOK URL IS MISSING");
+            });
+        });
     }
 }

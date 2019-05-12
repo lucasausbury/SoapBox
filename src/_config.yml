@@ -1,4 +1,6 @@
 title: Your awesome title
+source: .
+destination: ../build
 baseurl: ""
 
 markdown: kramdown

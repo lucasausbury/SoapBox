@@ -3,6 +3,7 @@ const fetch = require("isomorphic-fetch");
 const path = require("path");
 const fs = require("fs-extra");
 const db = require("dropbox").Dropbox;
+const mammoth = require("mammoth");
 
 if( !process.env.DBX_ACCESS_TOKEN ) {
     console.log("No DB Token");
@@ -21,19 +22,18 @@ fs.ensureDirSync(POSTS_DIR);
 
 //Refresh posts
 dbx.filesListFolder({ path:"" }).then(resp => {
-    console.log(resp.entries);
     resp.entries.forEach(entry => {
         const { name, path_lower } = entry;
-        console.log(name);
 
         if( entry[".tag"] === "file" ) {
             dbx.filesDownload({ path: path_lower }).then(data => {
-                const filename = path.resolve(POSTS_DIR, name);
-                const filecontents = data.fileBinary.toString();
-                console.log(filename);
+                const filename = path.resolve(POSTS_DIR, name.replace('docx', 'md'));
+                const filecontents = data.fileBinary;
 
-                fs.outputFile(filename, filecontents).catch(err => {
-                    console.log("Failed to write file", name, err);
+                mammoth.convertToMarkdown({buffer:filecontents}).then(result => {
+                    fs.outputFile(filename, result.value.replace(/\\/g, ""));
+                }).catch(err => {
+                    console.log("Failed to convert file", name, err);
                 });
             }).catch(err => {
                 console.log("Failed to download file", name, err);

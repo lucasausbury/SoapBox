@@ -1,16 +1,7 @@
-title: slog
-source: .
-destination: ../build
-baseurl: "/blog"
-url: ""
-permalink: /posts/:title-:short-year:month:day
+title: Your awesome title
+baseurl: ""
+
 markdown: kramdown
-paginate: 50
-paginate_path: "/p/:num"
+theme: minima
 plugins:
-  - jekyll-paginate
-defaults:
-  - scope:
-      path: ""
-    values:
-      layout: "default"
+  - jekyll-feed

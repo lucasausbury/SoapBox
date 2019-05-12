@@ -7,7 +7,7 @@
         "fetch-posts": "node ./scripts/fetch-posts.js",
         "start": "npm run fetch-posts && cd ./src && bundle exec jekyll serve",
         "start-functions": "netlify-lambda serve ./src/_functions",
-        "build": "npm run fetch-posts && npm run build-functions && cd ./src && bundle exec jekyll buil",
+        "build": "npm run fetch-posts && npm run build-functions && cd ./src && bundle exec jekyll build",
         "build-functions": "netlify-lambda build ./src/_functions"
     },
     "repository": {
@@ -26,5 +26,9 @@
         "fs-extra": "^6.0.1",
         "isomorphic-fetch": "^2.2.1",
         "netlify-lambda": "^0.4.0"
+    },
+    "dependencies": {
+        "bundle": "^2.1.0",
+        "mammoth": "^1.4.8"
     }
 }

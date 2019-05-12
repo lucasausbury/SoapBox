@@ -2,6 +2,5 @@ title: Your awesome title
 baseurl: ""
 
 markdown: kramdown
-theme: minima
 plugins:
   - jekyll-feed

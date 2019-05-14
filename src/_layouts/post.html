@@ -1,0 +1,14 @@
+{% include head.html %}
+{% include nav.html %}
+  <main>
+    <section class="section">
+      <div class="container py-5">
+          <h1 class="title mb-0">{{ page.title }} <small class="text-muted"> by {{ page.author }}</small></h1>
+          <h4>{% for tag in page.tags %}
+              <code class="bg-white p-1">{{ tag }}</code> 
+          {% endfor %}</h4>
+          {{ content }}
+      </div>
+    </section>
+  </main>
+{% include foot.html %}

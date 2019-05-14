@@ -1,10 +1,52 @@
 ---
-layout: default
+layout: home
 ---
-
+<div class="row">
+  <div class="col-sm-5">
+    <div class="form-group pl-3">
+      <select class="filter">
+        <option>Show me everything</option>
+        <option>Just show book posts</option>
+        <option>Just show lifestyle posts</option>
+        <option>Just show relationship posts</option>
+        <option>Just show fashion posts</option>
+        <option>Just show miscellaneous posts</option>
+      </select>
+    </div>
+  </div><div class="col-sm-5 offset-sm-2">
+    <div class="form-group pr-3">
+      <select class="filter">
+        <option>In chronological order</option>
+        <option>In reverse chronological order</option>
+        <option>In alphabetical order</option>
+        <option>In reverse alphabetical order</option>
+        <option>In categorical order</option>
+        <option>In reverse categorical order</option>
+      </select>
+    </div>
+  </div>
+  <div class="col-sm-8 order-5">
+    <div id="wordcloud"></div>
+  </div>
+{% assign counter = 0 %}
+{% for i in (0..5) %}
 {% for post in site.posts %}
-    <li>
-      <a href="{{ post.url }}">{{ post.title }}</a>
-      {{ post.excerpt }}
-    </li>
+  {% if counter > 11 %}
+    {% assign counter = 12 %}
+  {% else %}
+    {% assign counter = counter | plus:1 %}
+  {% endif %}
+    <div class="col-sm-4 order-{{ counter }}">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">{{ post.title }}</h4>
+          <div class="card-text">{{ post.excerpt }}</div>
+          <div class="text-right">
+            <a href="{{ post.url }}" class="card-link">Read more &raquo;</a>
+          </div>
+        </div>
+      </div>
+    </div>
   {% endfor %}
+  {% endfor %}
+  </div>

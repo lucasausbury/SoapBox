@@ -7,4 +7,4 @@ src/_posts
 node_modules
 .DS_Store
 src/_site
-src/_site/
+_site

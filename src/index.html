@@ -1,9 +1,19 @@
 ---
 layout: home
 ---
+<div class="container">
+  <div class="note">
+    <img class="note-header" src="/assets/img/avatar.png" />
+    <p class="lead">Hey! Welcome to my blog where I talk about things and stuff. 
+      orem ipsum dolor sit amet, ea commune patrioque nam, nisl putent scribentur sit ad, 
+      mei minim euismod deserunt et. Solet nonumy albucius mel cu. Semper vidisse torquatos 
+      has ut, vis iisque noluisse explicari ne.</p>
+  </div>
+</div>
+
 <div class="row">
   <div class="col-sm-5">
-    <div class="form-group pl-3">
+    <div class="form-group px-3">
       <select class="filter">
         <option>Show me everything</option>
         <option>Just show book posts</option>
@@ -14,7 +24,7 @@ layout: home
       </select>
     </div>
   </div><div class="col-sm-5 offset-sm-2">
-    <div class="form-group pr-3">
+    <div class="form-group px-3">
       <select class="filter">
         <option>In chronological order</option>
         <option>In reverse chronological order</option>
@@ -36,7 +46,7 @@ layout: home
   {% else %}
     {% assign counter = counter | plus:1 %}
   {% endif %}
-    <div class="col-sm-4 order-{{ counter }}">
+    <div class="col-md-6 col-lg-4 order-{{ counter }}">
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">{{ post.title }}</h4>

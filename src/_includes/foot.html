@@ -1,2 +1,10 @@
+    <script>
+        $('#nav').on('show.bs.collapse', function(e) {
+            $('a.hamburger-btn').addClass('active');
+        });
+        $('#nav').on('hide.bs.collapse', function(e) {
+            $('a.hamburger-btn').removeClass('active');
+        });
+    </script>
 </body>
 </html>

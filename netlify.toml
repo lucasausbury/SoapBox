@@ -3,5 +3,7 @@
     publish = "./build"
     command = "npm run build"
 
-[redirects]
-    /* /404.html 404
+[[redirects]]
+    from = "/*"
+    to = "/404.html"
+    status = 404

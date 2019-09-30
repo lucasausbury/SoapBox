@@ -1,10 +1,15 @@
     <script>
-        $('#nav').on('show.bs.collapse', function(e) {
-            $('a.hamburger-btn').addClass('active');
-        });
-        $('#nav').on('hide.bs.collapse', function(e) {
-            $('a.hamburger-btn').removeClass('active');
-        });
+        $('.hamburger').on('click', function(e) {
+            e.preventDefault();
+
+            if( $('nav').hasClass('active') ) {
+                $('body').removeClass('lock');
+                $('nav').removeClass('active');
+            } else {
+                $('body').addClass('lock');
+                $('nav').addClass('active');
+            }
+        })
     </script>
 </body>
 </html>

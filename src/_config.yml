@@ -1,4 +1,4 @@
-title: Your awesome title
+title: Hannah VanVels
 source: .
 destination: ../build
 baseurl: ""
@@ -6,3 +6,15 @@ baseurl: ""
 markdown: kramdown
 plugins:
   - jekyll-feed
+  - jekyll-archives
+
+jekyll-archives:
+  enabled:
+    - tags
+    - categories
+  layouts:
+    tag: 'tag'
+    category: 'category'
+  permalinks:
+    tag: '/tag/:name/'
+    category: '/category/:name/'

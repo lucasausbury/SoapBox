@@ -2,3 +2,6 @@
     functions = "./build-functions"
     publish = "./build"
     command = "npm run build"
+
+[redirects]
+    /* /404.html 404

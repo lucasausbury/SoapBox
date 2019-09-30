@@ -1,0 +1,73 @@
+.wordcloud {
+	margin:0 auto;
+	width:100%;
+	height:18rem;
+	background-color:$rose-gold-100;
+	padding:1.25rem;
+	box-shadow: 0 1px 1px rgba($rose-gold,.4), 
+		0 2px 2px rgba($rose-gold,.35), 
+		0 4px 4px rgba($rose-gold,.3), 
+		0 8px 8px rgba($rose-gold,.25), 
+		0 16px 16px rgba($rose-gold,.2), 
+		0 32px 32px rgba($rose-gold,.15);
+
+	a {
+		text-decoration:none;
+	}
+	a:hover {
+		text-decoration:underline;
+	}
+}
+.jqcloud {
+	line-height: normal;
+	overflow: hidden;
+	position: relative;
+}
+.jqcloud-word {
+	margin: 0;
+	padding: 0;
+}
+.jqcloud-word.w10 {
+	color:$dark-green;
+	font-size:300%;
+}
+.jqcloud-word.w9 {
+	color:rgba($dark-green, .9);
+	font-size:280%;
+}
+.jqcloud-word.w8 {
+	color:rgba($dark-green, .85);
+	font-size:260%;
+}
+.jqcloud-word.w7 {
+	color:rgba($dark-green, .8);
+	font-size:240%;
+}
+.jqcloud-word.w6 {
+	color:rgba($dark-green, .75);
+	font-size:230%;
+}
+.jqcloud-word.w5 {
+	color:rgba($dark-green, .7);
+	font-size:220%;
+}
+.jqcloud-word.w4 {
+	color:rgba($dark-green, .65);
+	font-size:200%;
+}
+.jqcloud-word.w3 {
+	color:rgba($dark-green, .6);
+	font-size:180%;
+}
+.jqcloud-word.w2 {
+	color:rgba($dark-green, .55);
+	font-size:160%;
+}
+.jqcloud-word.w1 {
+	color:rgba($dark-green, .5);
+	font-size:140%;
+}
+
+.jqcloud-word a, .jqcloud-word a:hover {
+	color:inherit;
+}

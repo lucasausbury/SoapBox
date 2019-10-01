@@ -15,6 +15,16 @@ body {
     width:100%;
     overflow-x:hidden;
 }
+h1.display {
+    font-size:3rem;
+    line-height:1.1;
+    color:$rose-gold-800;
+    margin-bottom:3rem;
+
+    mark {
+        color:rgba($rose-gold-800, .8);
+    }
+}
 
 h1, h2, h3, h4, h5, h6 {
     font-family:$serif;
@@ -24,7 +34,7 @@ a, a:hover, a:focus, a:active, a:visited {
     color:$dark-blue;
 }
 mark {
-    background-color:$rose-gold-200;
+    background-color:rgba($rose-gold-200, .5);
     padding:.15rem;
 }
 

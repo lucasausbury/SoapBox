@@ -12,75 +12,58 @@ title: Thoughts
 		
 <div class="columns">
 	<div class="column half">
-		<div class="form-group px-3">
-			<select class="filter" id="filter">
-				<option value="">Show me everything</option>
-				<option value="books">Just show book posts</option>
-				<option value="lifestyle">Just show lifestyle posts</option>
-				<option value="relationship">Just show relationship posts</option>
-				<option value="Fashion">Just show fashion posts</option>
-				<option value="miscellaneous">Just show miscellaneous posts</option>
-			</select>
-		</div>
+		<select class="filter">
+			<option value="" disabled selected>Show me everything</option>
+			{% for category in site.categories %}
+				<option value="{{ category[0] }}">Just show {{ category[0] }} posts</option>
+			{% endfor %}
+		</select>
 	</div><div class="column half">
-		<div class="form-group px-3">
-			<select class="filter">
-				<option>In chronological order</option>
-				<option>In reverse chronological order</option>
-				<option>In alphabetical order</option>
-				<option>In reverse alphabetical order</option>
-				<option>In categorical order</option>
-				<option>In reverse categorical order</option>
-			</select>
-		</div>
+		<!--<select class="filter">
+			<option>In chronological order</option>
+			<option>In reverse chronological order</option>
+			<option>In alphabetical order</option>
+			<option>In reverse alphabetical order</option>
+			<option>In categorical order</option>
+			<option>In reverse categorical order</option>
+		</select>-->
 	</div>
 </div><div id="posts" class="columns">
 	<div id="wordcloud" class="column two-thirds order-5 hidden-mobile">
 		<div id="tags" class="wordcloud"></div>
-	</div><div class="column one-third order-%count%">
-			<a href="%url%" class="sticky-note">
-				<h4 class="title">%title%</h4>
-				<h5 class="subtitle">%pretty_date%</h5>
-				<div class="body">%excerpt%</div>
+	</div>
+
+	{% assign counter = 0 %}
+	{% for i in (0..5) %}
+	{% for post in site.posts %}
+		{% if counter > 9 %}
+			{% assign counter = 10 %}
+		{% else %}
+			{% assign counter = counter | plus:1 %}
+		{% endif %}
+		<div class="column one-third order-{{ counter }}">
+			<a href="{{ post.url }}" class="sticky-note">
+				<h4 class="title">{{ post.title }}</h4>
+				<h5 class="subtitle">{{ post.date | date: '%a, %b %d, %Y' }}</h5>
+				<div class="body">{{ post.excerpt }}</div>
 				<div class="link">
 					Read more <i class="fal fa-long-arrow-alt-right"></i>
 				</div>
 			</a>
-		</div><div class="column one-third order-%count%">
-				<a href="%url%" class="sticky-note">
-					<h4 class="title">%title%</h4>
-					<h5 class="subtitle">%pretty_date%</h5>
-					<div class="body">%excerpt%</div>
-					<div class="link">
-						Read more <i class="fal fa-long-arrow-alt-right"></i>
-					</div>
-				</a>
-			</div>
+		</div>
+	{% endfor %}
+	{% endfor %}
 </div>
 
-<script id="post_template" type="text/template">
-	<div class="column one-third order-%count%">
-		<a href="%url%" class="sticky-note">
-			<h4 class="title">%title%</h4>
-			<h5 class="subtitle">%pretty_date%</h5>
-			<div class="body">%excerpt%</div>
-			<div class="link">
-				Read more <i class="fal fa-long-arrow-alt-right"></i>
-			</div>
-		</a>
-	</div>
-</script>
 <script src="/assets/js/jQCloud.min.js"></script>
 <script>
-	var words = [
-	{% for tag in site.tags %}
+	var words = [{% for tag in site.tags %}
 		{
-			"text":"{{ tag[0] }}",
+			"text":"#{{ tag[0] }}",
 			"weight":"{{ tag[1].size }}",
-			"link":"#"
+			"link":"/tag/{{ tag[0] }}"
 		}{% unless forloop.last %},{% endunless %}
-	{% endfor %}
-	];
+	{% endfor %}];
 
 	$('#tags').jQCloud(words, {
 		autoResize: true,
@@ -88,46 +71,7 @@ title: Thoughts
 		delay:50
 	});
 
-	$(document).on('change', '#filter', function() {
-		var posts = $('#posts').children().not( $('#wordcloud') );
-		var category = $(this).val();
-	
-		posts.each(function() {
-			if( category.length == 0 || $(this).data('category') == category )
-				$(this).show();
-			else {
-				$(this).hide();
-				console.log( $(this).data() );
-			}
-		})
-	});
-	$(document).ready(function() {
-		$('#posts').children().not($('#wordcloud')).remove();
-
-		$.getJSON("/api/posts.json", function(data) {
-			var $template = $('#post_template').html();
-			$('#posts').children().not($('#wordcloud')).remove();
-
-			$.each(data, function(i, p) {
-				var $t = $template;
-				var $e = null;
-
-				i = i > 9 ? 10 : i+1;
-
-				$t = $t.replace(/%count%/g, i);
-				$t = $t.replace(/%pretty_date%/g, p.pretty_date);
-				$t = $t.replace(/%title%/g, p.title);
-				$t = $t.replace(/%excerpt%/g, p.excerpt);
-				$t = $t.replace(/%url%/g, p.url);
-
-				$e = $( $t );
-				$e.data('tags', p.tags);
-				$e.data('category', p.category);
-
-				$('#posts').append($e);
-			});
-		}).fail(function(e) {
-			alert("Problem loading posts");
-		});
+	$(document).on('change', '.filter', function() {
+		window.location.href = '/category/' + $(this).val();
 	});
 </script>

@@ -3,18 +3,21 @@
 	{% include nav.html %}
 </header>
 <main>
-	<article>
-		<h1 class="title">{{ page.title }}</h1>
-		<h2 class="subtitle">This time, it's personal</h2>
-		<div class="tags">
-		{% for tag in page.tags %}
-			<mark>{{ tag }}</mark> 
-		{% endfor %}
+	<h1 class="display">{{ page.title | capitalize }} posts</mark></h1>
+	
+	<div class="columns">
+	{% for post in page.posts %}
+		<div class="column one-third order-{{ counter }}">
+			<a href="{{ post.url }}" class="sticky-note">
+				<h4 class="title">{{ post.title }}</h4>
+				<h5 class="subtitle">{{ post.date | date: '%a, %b %d, %Y' }}</h5>
+				<div class="body">{{ post.excerpt }}</div>
+				<div class="link">
+					Read more <i class="fal fa-long-arrow-alt-right"></i>
+				</div>
+			</a>
 		</div>
-		
-		<div class="content">
-			{{ content }}
-		</div>
-	</article>
+	{% endfor %}
+	</div>
 </main>
 {% include foot.html %}

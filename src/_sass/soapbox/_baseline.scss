@@ -36,6 +36,13 @@ a, a:hover, a:focus, a:active, a:visited {
 mark {
     background-color:rgba($rose-gold-200, .5);
     padding:.15rem;
+
+    a {
+        text-decoration:none;
+    }
+    a:hover {
+        text-decoration:underline;
+    }
 }
 
 header {

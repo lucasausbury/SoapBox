@@ -74,7 +74,9 @@
 		font-size:85%;
 		text-align:right;
 	}
-
+	mark {
+		background:rgba(255,255,255, .5);
+	}
 }
 .column:nth-child(5n) .sticky-note {
 	background-color:$neon-green;

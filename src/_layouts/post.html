@@ -8,7 +8,7 @@
 		<h2 class="subtitle">{{ page.subtitle }}</h2>
 		<div class="tags">
 		{% for tag in page.tags %}
-			<mark>{{ tag }}</mark> 
+			<mark><a href="/tag/{{ tag }}">{{ tag }}</a></mark> 
 		{% endfor %}
 		</div>
 		

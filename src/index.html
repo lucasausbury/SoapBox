@@ -42,7 +42,7 @@ title: Thoughts
 					<h4 class="title">{{ post.title }}</h4>
 					<h5 class="subtitle">
 						{% for category in post.categories %}
-							<mark>{{ category }}</mark> 
+							<mark>{{ category | capitalize }}</mark> 
 						{% endfor %}
 						{{ post.date | date: '%a, %b %d, %Y' }}
 					</h5>

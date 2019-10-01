@@ -21,6 +21,9 @@
 		border:.25rem solid $rose-gold-200;
 		border-radius:50%;
 	}
+	.title {
+		color:hsla(0%,0%,14%,.66)!important;
+	}
 	&::before, &::after {
 		content:'';
 		z-index:-1;

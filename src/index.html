@@ -34,7 +34,6 @@ title: Thoughts
 	</div>
 
 	{% assign counter = 0 %}
-	{% for i in (0..5) %}
 	{% for post in site.posts %}
 		{% if counter < 10 %}
 			{% assign counter = counter | plus:1 %}
@@ -54,7 +53,6 @@ title: Thoughts
 				</a>
 			</div>
 		{% endif %}
-	{% endfor %}
 	{% endfor %}
 </div>
 

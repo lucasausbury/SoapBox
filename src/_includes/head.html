@@ -1,9 +1,23 @@
+<!doctype html>
 <html lang="en" >
 <head>
-    <meta charset="UTF-8" />
-    <title>{{ site.title }}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="/assets/css/styles.css">
-    <script src="https://kit.fontawesome.com/0414d7d43a.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  </head><body>
+	<meta charset="UTF-8" />
+	<title>{% if page.title | size > 0 %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+	<meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ page.excerpt | strip_html }}{% endif %}" />
+	<meta name="robots" content="index, follow" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta property="og:type" content="website" /> 
+	<meta property="og:title" content="{% if page.title | size > 0 %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
+	<meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ page.excerpt | strip_html }}{% endif %}" />
+	<meta property="og:image" content="{% if page.header_img %}{{ page.header_img }}{% else %}{{ site.header_img }}{% endif %}" />
+	<meta property="og:url" content="{{ site.url }}" />
+	<meta property="og:site_name" content="{{ site.title }}" />
+	<meta name="twitter:title" content="{% if page.title | size > 0 %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+	<meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}{{ page.excerpt | strip_html }}{% endif %}">
+	<meta name="twitter:image" content="{% if page.header_img %}{{ page.header_img }}{% else %}{{ site.header_img }}{% endif %}">
+	<meta name="twitter:site" content="@hannahvanvels">
+	<meta name="twitter:creator" content="@hannahvanvels">
+	<link rel="stylesheet" href="/assets/css/styles.css" />
+	<script src="https://kit.fontawesome.com/0414d7d43a.js" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+</head><body> 

@@ -14,7 +14,7 @@ exports.handler = function(event, context, callback) {
             }
         });
     } else if( headers["x-dropbox-signature"] ) {
-        fetch('https://api.netlify.com/build_hooks/5cd8780d0f75d2ed2b810961', {
+        fetch(process.env.NETLIFY_BUILD_HOOK_URL, {
             method:'POST',
             body:""
         }).then(res => {

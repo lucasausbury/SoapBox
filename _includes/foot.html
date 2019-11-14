@@ -1,0 +1,15 @@
+    <script>
+        $('.hamburger').on('click', function(e) {
+            e.preventDefault();
+
+            if( $('nav').hasClass('active') ) {
+                $('body').removeClass('lock');
+                $('nav').removeClass('active');
+            } else {
+                $('body').addClass('lock');
+                $('nav').addClass('active');
+            }
+        })
+    </script>
+</body>
+</html>

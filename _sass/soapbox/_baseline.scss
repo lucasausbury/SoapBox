@@ -1,0 +1,91 @@
+*, ::before, ::after {
+    box-sizing:border-box;
+}
+body, html {
+    margin:0;
+    padding:0;
+}
+body {
+    position:relative;
+    font-family:$sans-serif;
+    font-size:16px;
+    line-height:1.5;
+    background-color:$muted-pink;
+    background-image:url($texture);
+    width:100%;
+    overflow-x:hidden;
+}
+h1.display {
+    font-size:3rem;
+    line-height:1.1;
+    color:$rose-gold-800;
+    margin-bottom:3rem;
+
+    mark {
+        color:rgba($rose-gold-800, .8);
+    }
+}
+
+h1, h2, h3 {
+    font-family:$serif;
+    color:$rose-gold-700;
+    margin:0;
+}
+h4, h5, h6 {
+    font-family:$sans-serif;
+    font-weight:900;
+    color:$dark-blue-600;
+    margin:0;
+}
+a, a:hover, a:focus, a:active, a:visited {
+    color:$dark-blue;
+}
+mark {
+    background-color:rgba($rose-gold-200, .5);
+    padding:.15rem;
+
+    a {
+        text-decoration:none;
+    }
+    a:hover {
+        text-decoration:underline;
+    }
+}
+
+header {
+    position:relative;
+    z-index:1020;
+}
+main {
+    position:relative;
+    display:block;
+    padding:1rem;
+    z-index:1010;
+}
+
+select {
+    display: block;
+    width:100%;
+    padding: .375rem 1.25rem .375rem .75rem;
+    font-size:2rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: $rose-gold;
+    background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3e%3cpath fill='#{$rose-gold}' d='M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z'/%3e%3c/svg%3e") no-repeat;
+    background-position-y:1rem;
+    background-position-x:right;
+    background-size:2rem 2rem;
+    background-color:transparent;
+    border: none;
+    border-bottom:.2rem solid $rose-gold;
+    border-radius: .0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+@media (min-width:768px) {
+    main {
+        padding:2rem;
+    }
+}

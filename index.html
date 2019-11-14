@@ -1,0 +1,79 @@
+---
+layout: default
+sitemap:
+    priority: 1
+---
+<div class="note">
+	<img class="pin" src="/assets/img/avatar.png" />
+	<p class="lead">Hey! Welcome to my blog where I talk about things and stuff. 
+		orem ipsum dolor sit amet, ea commune patrioque nam, nisl putent scribentur sit ad, 
+		mei minim euismod deserunt et. Solet nonumy albucius mel cu. Semper vidisse torquatos 
+		has ut, vis iisque noluisse explicari ne.</p>
+</div>
+		
+<div class="columns">
+	<div class="column half">
+		<select class="filter">
+			<option value="" disabled selected>Show me everything</option>
+			{% for category in site.categories %}
+				<option value="{{ category[0] }}">Just show {{ category[0] }} posts</option>
+			{% endfor %}
+		</select>
+	</div><div class="column half">
+		<!--<select class="filter">
+			<option>In chronological order</option>
+			<option>In reverse chronological order</option>
+			<option>In alphabetical order</option>
+			<option>In reverse alphabetical order</option>
+			<option>In categorical order</option>
+			<option>In reverse categorical order</option>
+		</select>-->
+	</div>
+</div><div id="posts" class="columns">
+	<div id="wordcloud" class="column two-thirds order-5 hidden-mobile">
+		<div id="tags" class="wordcloud"></div>
+	</div>
+
+	{% assign counter = 0 %}
+	{% for post in site.posts %}
+		{% if counter < 10 %}
+			{% assign counter = counter | plus:1 %}
+			<div class="column one-third order-{{ counter }}">
+				<a href="{{ post.url }}" class="sticky-note">
+					<h4 class="title">{{ post.title }}</h4>
+					<h5 class="subtitle">
+						{% for category in post.categories %}
+							<mark>{{ category | capitalize }}</mark> 
+						{% endfor %}
+						{{ post.date | date: '%a, %b %d, %Y' }}
+					</h5>
+					<div class="body">{{ post.excerpt }}</div>
+					<div class="link">
+						Read more <i class="fal fa-long-arrow-alt-right"></i>
+					</div>
+				</a>
+			</div>
+		{% endif %}
+	{% endfor %}
+</div>
+
+<script src="/assets/js/jQCloud.min.js"></script>
+<script>
+	var words = [{% for tag in site.tags %}
+		{
+			"text":"#{{ tag[0] }}",
+			"weight":"{{ tag[1].size }}",
+			"link":"/tag/{{ tag[0] }}"
+		}{% unless forloop.last %},{% endunless %}
+	{% endfor %}];
+
+	$('#tags').jQCloud(words, {
+		autoResize: true,
+		shape: 'rectangular',
+		delay:50
+	});
+
+	$(document).on('change', '.filter', function() {
+		window.location.href = '/category/' + $(this).val();
+	});
+</script>

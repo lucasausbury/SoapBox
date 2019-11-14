@@ -1,0 +1,21 @@
+title: Hannah VanVels
+source: .
+destination: ../build
+baseurl: ""
+permalink: /thoughts/:categories/:title/
+
+markdown: kramdown
+plugins:
+  - jekyll-feed
+  - jekyll-archives
+
+jekyll-archives:
+  enabled:
+    - tags
+    - categories
+  layouts:
+    tag: 'tag'
+    category: 'category'
+  permalinks:
+    tag: '/thoughts/tag/:name/'
+    category: '/thoughts/:name/'

@@ -62,6 +62,9 @@
 		text-overflow: ellipsis;
 		overflow:hidden;
 	}
+	.title, .subtitle {
+		color:hsla(0%,0%,14%,.66)!important;
+	}
 	.body {
 		position:relative;
 		overflow:hidden;
@@ -113,7 +116,7 @@
 	background-color:$neon-purple;
 
 	&:hover {
-		background-color:darken($neon-purple, 15%);
+		background-color:darken($neon-purple, 3%);
 	}
 }
 a.sticky-note, a.sticky-note:hover {

@@ -1,7 +1,7 @@
 [build]
     functions = "./build-functions"
     publish = "./build"
-    command = "npm run build"
+    command = "npm run build && jekyll algolia"
 
 [[redirects]]
     from = "/*"

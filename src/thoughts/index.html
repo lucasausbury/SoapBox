@@ -2,6 +2,23 @@
 layout: default
 title: Thoughts
 ---
+<script src="https://cdn.jsdelivr.net/npm/algoliasearch@3/dist/algoliasearchLite.min.js"></script>
 
-<H1>hello world</H1>
-<h2>Thoughts</h2>
+<input type="text" id="search" />
+<button onclick="searchForTheThing();">Search</button>
+
+<script>
+function searchForTheThing() {
+    const client = algoliasearch('7WBOAC6Y9S', 'cd7a9af010d682348501c0b4cca7f369');
+    const index = client.initIndex('HannahVanVels.com');
+    const q = document.getElementById('search').value;
+
+    index.search({
+        query: q
+    }, (err, { hits } = {}) => {
+        if(err) throw err;
+
+        console.log(hits);
+    })
+}
+</script>

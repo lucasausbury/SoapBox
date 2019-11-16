@@ -19,7 +19,3 @@ jekyll-archives:
   permalinks:
     tag: '/thoughts/tag/:name/'
     category: '/thoughts/category/:name/'
-
-algolia:
-  application_id: 7WBOAC6Y9S
-  index_name: 'HannahVanVels.com'

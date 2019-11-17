@@ -1,0 +1,113 @@
+---
+layout: default
+title: Thoughts
+---
+<script src="https://cdn.jsdelivr.net/npm/algoliasearch@3/dist/algoliasearchLite.min.js"></script>
+
+<div class="columns">
+	<aside class="column one-third">
+		<form>
+			<h3 class="text-center">Looking for something?</h3>
+
+			<label class="sr-only" for="searchBox">Search terms</label>
+			<input id="searchBox" type="text" placeholder="Search terms" />
+
+			<label for="categoryFilter">Categories</label>
+			<select id="categoryFilter">
+				<option value="">Any</option>
+				{% for category in site.categories %}
+					<option>{{ category[0] }}</option>
+				{% endfor %}
+			</select>
+
+			<label for="tagFilter">Tags</label>
+			<select id="tagFilter">
+				<option value="">Any</option>
+				{% for tag in site.tags %}
+					<option>{{ tag[0] }}</option>
+				{% endfor %}
+			</select>
+		</form>
+	</aside><section class="column two-thirds" id="results"></section>
+</div>
+
+<script>
+function debounce(func, wait, immediate) {
+	var timeout;
+	return function() {
+		var context = this, args = arguments;
+		var later = function() {
+			timeout = null;
+			if (!immediate) func.apply(context, args);
+		};
+		var callNow = immediate && !timeout;
+		clearTimeout(timeout);
+		timeout = setTimeout(later, wait);
+		if (callNow) func.apply(context, args);
+	};
+}
+function searchForTheThing() {
+	const client = algoliasearch('7WBOAC6Y9S', 'cd7a9af010d682348501c0b4cca7f369');
+	const index = client.initIndex('HannahVanVels.com');
+	const q = document.getElementById('searchBox').value;
+	var filter = 'type:post';
+	var cat = $('#categoryFilter').val();
+	var tag = $('#tagFilter').val();
+
+	if( cat.length > 0 ) filter += ' AND categories:' + cat;
+	if( tag.length > 0 ) filter += ' AND tags:' + tag.replace(/ /g, '-');
+	console.log(filter);
+
+	index.search({
+		query: q,
+		filters: filter
+	}, (err, { hits } = {}) => {
+		var tmpl = $('#result_tmpl').html();
+		var $res = $('#results');
+
+		if(err) throw err;
+		console.log(hits);
+
+		$res.html('<div class="columns" />');
+		for( var i in hits ) {
+			var t = tmpl;
+			var $d = $('<div class="column half" />');
+			var u = hits[i].url.replace('/src/', '/');
+			var d = new Date(parseInt(hits[i].date) * 1000);
+			var c = hits[i].categories
+			var o = {weekday:'short', month:'short', day:'numeric',year:'numeric'}
+			
+			if( c[0] == 'src' )
+				c.splice(0, 1)
+			c = c.join(', ')
+			
+			t = t.replace(/\$url\$/g, u);
+			t = t.replace(/\$title\$/g, hits[i].title);
+			t = t.replace(/\$category\$/g, c);
+			t = t.replace(/\$date\$/g, d.toLocaleDateString("en-US", o));
+			t = t.replace(/\$excerpt\$/g, hits[i].excerpt_text);
+
+			$d.html(t);
+			$res.find('.columns').append( $d );
+		}
+	})
+}
+var searchForTheThingDelayed = debounce(searchForTheThing, 500);
+
+document.getElementById('searchBox').addEventListener('keyup', searchForTheThingDelayed);
+document.getElementById('categoryFilter').addEventListener('change', searchForTheThing);
+document.getElementById('tagFilter').addEventListener('change', searchForTheThing);
+</script>
+<script type="tmpl" id="result_tmpl">
+<a href="$url$" class="sticky-note">
+	<h4 class="title">$title$</h4>
+	<h5 class="subtitle">
+		<mark>$category$</mark> 
+		$date$
+	</h5>
+	<div class="body">$excerpt$</div>
+	<div class="link">
+		Read more <i class="fal fa-long-arrow-alt-right"></i>
+	</div>
+</a>
+</script>

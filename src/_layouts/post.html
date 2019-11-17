@@ -9,11 +9,11 @@
 		<div class="tags">
 			<p>Categories: 
 			{% for category in page.categories %}
-				<mark><a href="/category/{{ category }}">{{ category }}</a></mark> 
+				<mark><a href="/thoughts/category/{{ category }}">{{ category }}</a></mark> 
 			{% endfor %}
 			Tags: 
 			{% for tag in page.tags %}
-				<mark><a href="/tag/{{ tag }}">{{ tag }}</a></mark> 
+				<mark><a href="/thoughts/tag/{{ tag }}">{{ tag }}</a></mark> 
 			{% endfor %}
 			</p>
 		</div>

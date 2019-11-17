@@ -2,7 +2,7 @@ title: Hannah VanVels
 source: .
 destination: ../build
 baseurl: ""
-permalink: /thoughts/:categories/:title/
+permalink: /thoughts/category/:categories/:title/
 
 markdown: kramdown
 plugins:
@@ -18,4 +18,4 @@ jekyll-archives:
     category: 'category'
   permalinks:
     tag: '/thoughts/tag/:name/'
-    category: '/thoughts/:name/'
+    category: '/thoughts/category/:name/'

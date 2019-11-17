@@ -84,35 +84,35 @@
 		background:rgba(255,255,255, .5);
 	}
 }
-.column:nth-child(5n) .sticky-note {
+.column:nth-child(5n) > .sticky-note {
 	background-color:$neon-green;
 
 	&:hover {
 		background-color:darken($neon-green, 15%);
 	}
 }
-.column:nth-child(5n+1) .sticky-note {
+.column:nth-child(5n+1) > .sticky-note {
 	background-color:$neon-orange;
 
 	&:hover {
 		background-color:darken($neon-orange, 15%);
 	}
 }
-.column:nth-child(5n+2) .sticky-note {
+.column:nth-child(5n+2) > .sticky-note {
 	background-color:$neon-yellow;
 
 	&:hover {
 		background-color:darken($neon-yellow, 15%);
 	}
 }
-.column:nth-child(5n+3) .sticky-note {
+.column:nth-child(5n+3) > .sticky-note {
 	background-color:$neon-blue;
 
 	&:hover {
 		background-color:darken($neon-blue, 15%);
 	}
 }
-.column:nth-child(5n+4) .sticky-note {
+.column:nth-child(5n+4) > .sticky-note {
 	background-color:$neon-purple;
 
 	&:hover {

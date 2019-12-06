@@ -8,3 +8,4 @@ node_modules
 .DS_Store
 src/_site
 _site
+_config.yml

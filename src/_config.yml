@@ -2,7 +2,7 @@ title: Hannah VanVels
 source: .
 destination: ../build
 baseurl: ""
-permalink: /thoughts/category/:categories/:title/
+permalink: /thoughts/category/:categories/:slug/
 
 markdown: kramdown
 plugins:

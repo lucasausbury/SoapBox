@@ -1,6 +1,32 @@
 ---
 layout: default
-title: Contact
+title: Contact me
+subtitle: New phone, who dis?
 ---
 
-<h1>Hello contact</h1>
+<article>
+    <h1 class="title">{{ page.title }}</h1>
+    <h2 class="subtitle">{{ page.subtitle }}</h2>
+
+    <div class="content">
+        <p>Let's work together! For editorial services, reach out to me at 
+            <a href="mailto:submissions@hannahvanvels.com">submissions@hannahvanvels.com</a></p>
+
+        <p>Have another question? For all other inquiries, reacho out to me at
+            <a href="mailto:hello@hannahvanvels.com">hello@hannahvanvels.com</a></p>
+            
+        <img id="contact" src="/assets/img/contact.png" />
+    </div>
+</article>
+
+<style>
+    #contact {
+        display:block;
+        width:100%;
+        max-width:250px;
+        margin-left:auto;
+        margin-right:auto;
+        border:none;
+        margin-top:3rem;
+    }
+</style>

@@ -73,7 +73,8 @@
 		-webkit-line-clamp:6;
 		-webkit-box-orient:vertical;
 		line-height:1.5;
-		height:(1.5* 6rem) + 1rem;
+		height:(1.5* 6rem);
+		margin-top:1rem;
 		margin-bottom:1rem;
 	}
 	.link {
@@ -81,7 +82,10 @@
 		text-align:right;
 	}
 	mark {
+		padding:.25rem;
 		background:rgba(255,255,255, .5);
+		border:1px solid rgba(0,0,0,.1);
+		border-radius:3px;
 	}
 }
 .column:nth-child(5n) > .sticky-note {

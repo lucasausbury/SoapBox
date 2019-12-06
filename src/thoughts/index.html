@@ -73,12 +73,15 @@ function searchForTheThing() {
 			var t = tmpl;
 			var $d = $('<div class="column half" />');
 			var u = hits[i].url.replace('/src/', '/');
+			var u = '/thoughts/category/';
 			var d = new Date(parseInt(hits[i].date) * 1000);
 			var c = hits[i].categories
 			var o = {weekday:'short', month:'short', day:'numeric',year:'numeric'}
 			
 			if( c[0] == 'src' )
 				c.splice(0, 1)
+
+			u += c.join('/')+'/'+hits[i].slug
 			c = c.join(', ')
 			
 			t = t.replace(/\$url\$/g, u);
@@ -97,6 +100,8 @@ var searchForTheThingDelayed = debounce(searchForTheThing, 500);
 document.getElementById('searchBox').addEventListener('keyup', searchForTheThingDelayed);
 document.getElementById('categoryFilter').addEventListener('change', searchForTheThing);
 document.getElementById('tagFilter').addEventListener('change', searchForTheThing);
+
+searchForTheThing();
 </script>
 <script type="tmpl" id="result_tmpl">
 <a href="$url$" class="sticky-note">

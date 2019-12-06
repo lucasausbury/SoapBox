@@ -4,31 +4,19 @@ title: Thoughts
 ---
 <div class="note">
 	<img class="pin" src="/assets/img/avatar.png" />
-	<p class="lead">Hey! Welcome to my blog where I talk about things and stuff. 
-		orem ipsum dolor sit amet, ea commune patrioque nam, nisl putent scribentur sit ad, 
-		mei minim euismod deserunt et. Solet nonumy albucius mel cu. Semper vidisse torquatos 
-		has ut, vis iisque noluisse explicari ne.</p>
+	<p class="lead">Hello and welcome! The publishing industry can be very 
+		opaque and mystical. But it doesn’t have to be. Here you will find 
+		info on writing, editing, publishing, and more from a literary agent, 
+		editor, and writer. <a href="/thoughts">Check out my blog</a> for 
+		miscellaneous musings on bookish things. If you’re looking for some 
+		editorial help taking your manuscript to the next level, 
+		<a href="/services">check out my services page</a>. Looking to query me? 
+		<a href="/wishlist">Check out my MSWL</a> to see what I’m on the hunt for. 
+		Something else? <a href="/contact">Contact me!</a> I can’t wait to hear 
+		from you. </p>
 </div>
 		
-<div class="columns">
-	<div class="column half">
-		<select class="filter">
-			<option value="" disabled selected>Show me everything</option>
-			{% for category in site.categories %}
-				<option value="{{ category[0] }}">Just show {{ category[0] }} posts</option>
-			{% endfor %}
-		</select>
-	</div><div class="column half">
-		<!--<select class="filter">
-			<option>In chronological order</option>
-			<option>In reverse chronological order</option>
-			<option>In alphabetical order</option>
-			<option>In reverse alphabetical order</option>
-			<option>In categorical order</option>
-			<option>In reverse categorical order</option>
-		</select>-->
-	</div>
-</div><div id="posts" class="columns">
+<div id="posts" class="columns">
 	<div id="wordcloud" class="column two-thirds order-5 hidden-mobile">
 		<div id="tags" class="wordcloud"></div>
 	</div>
@@ -70,9 +58,5 @@ title: Thoughts
 		autoResize: true,
 		shape: 'rectangular',
 		delay:50
-	});
-
-	$(document).on('change', '.filter', function() {
-		window.location.href = '/category/' + $(this).val();
 	});
 </script>
